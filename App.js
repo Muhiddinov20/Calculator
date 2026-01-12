@@ -6,7 +6,11 @@ import {
   StyleSheet,
   SafeAreaView,
   StatusBar,
+  Dimensions,
 } from 'react-native';
+
+const { width } = Dimensions.get('window');
+const BUTTON_SIZE = (width - 60) / 4;
 
 export default function App() {
   const [display, setDisplay] = useState('');
@@ -41,17 +45,21 @@ export default function App() {
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       
       <View style={styles.calculatorContainer}>
-        {/* Display Row */}
         <View style={styles.displayRow}>
           <View style={styles.display}>
             <Text style={styles.displayText} numberOfLines={1} adjustsFontSizeToFit>
               {display || '0'}
             </Text>
           </View>
-          <Button value="c" />
+          <TouchableOpacity
+            style={styles.clearButton}
+            onPress={() => handlePress('c')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.buttonText}>c</Text>
+          </TouchableOpacity>
         </View>
 
-        {/* Row 1: 1, 2, 3, / */}
         <View style={styles.row}>
           <Button value="1" />
           <Button value="2" />
@@ -59,7 +67,6 @@ export default function App() {
           <Button value="/" />
         </View>
 
-        {/* Row 2: 4, 5, 6, * */}
         <View style={styles.row}>
           <Button value="4" />
           <Button value="5" />
@@ -67,7 +74,6 @@ export default function App() {
           <Button value="*" />
         </View>
 
-        {/* Row 3: 7, 8, 9, - */}
         <View style={styles.row}>
           <Button value="7" />
           <Button value="8" />
@@ -75,7 +81,6 @@ export default function App() {
           <Button value="-" />
         </View>
 
-        {/* Row 4: 0, ., =, + */}
         <View style={styles.row}>
           <Button value="0" />
           <Button value="." />
@@ -95,15 +100,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   calculatorContainer: {
+    width: width - 20,
     padding: 10,
-    backgroundColor: '#fff',
   },
   displayRow: {
     flexDirection: 'row',
     marginBottom: 10,
+    alignItems: 'center',
   },
   display: {
-    flex: 3,
+    flex: 1,
     height: 80,
     backgroundColor: '#fff',
     borderWidth: 2,
@@ -119,17 +125,25 @@ const styles = StyleSheet.create({
     color: '#000',
     fontWeight: '500',
   },
-  row: {
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-  button: {
-    flex: 1,
+  clearButton: {
+    width: BUTTON_SIZE,
     height: 80,
     backgroundColor: '#1aa000',
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 5,
+    borderRadius: 8,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  button: {
+    width: BUTTON_SIZE,
+    height: BUTTON_SIZE,
+    backgroundColor: '#1aa000',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 8,
   },
   buttonText: {
