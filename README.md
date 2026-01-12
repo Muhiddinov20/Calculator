@@ -26,7 +26,7 @@ Yashil rangdagi zamonaviy kalkulyator:
 
 ### 1-qadam: APK faylini yuklab olish
 
- [APK YUKLAB OLISH](https://expo.dev/accounts/michaelmike/projects/Calculator/builds/2b24cb0d-59ff-416c-a21d-c2fb6ca11c05)
+ [APK YUKLAB OLISH](https://expo.dev/accounts/michaelmike/projects/Calculator/builds/c7b569f2-ed8f-4f2b-a5bc-f9bb92bb1eba)
 
 Yoki QR kodni skanerlang:
 
